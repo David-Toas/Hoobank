@@ -58,7 +58,7 @@ function Hero() {
     animate(
       elements,
       {
-        y: ["-100vh", "0vh"],
+        transform: ['translateY(-100vh)', 'translateY(0vh)'],
         opacity: [0, 1],
       },
       {
@@ -66,8 +66,9 @@ function Hero() {
         delay: stagger(0.2),
         easing: "ease-out",
       }
-    );
-  }, []);
+    );
+}, []);
+
 
   const images: ImageItem[] = [
     {
@@ -153,7 +154,7 @@ function Hero() {
       />
       <div>
         <div>
-          <div className="max-w-4xl relative overflow-hidden lg:px-16 px-10 lg:mt-28 mt-10">
+          <div className="max-w-4xl relative overflow-hidden lg:px-16 px-10 lg:mt-28">
             <div>
               <div className="flex justify-center items-center bg-[#222125] max-w-[330px] h-9 rounded-lg text-white text-sm font-normal mb-9">
                 <Image src="/Discount.svg" alt="Icon" height={32} width={32} />
