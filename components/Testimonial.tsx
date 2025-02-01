@@ -43,9 +43,9 @@ function Testimonial() {
         width="608"
         className="absolute top-[2200px] object-contain right-[2px] opacity-100 bg-blend-darken"
       />
-      <div className="px-16 relative overflow-hidden">
-        <div className="grid grid-cols-2 justify-between items-center gap-16 mt-24 mb-10">
-          <span className="font-semibold text-[40px] leading-[80px] font-poppins">
+      <div className="lg:px-16 px-24 relative overflow-hidden">
+        <div className="grid lg:grid-cols-2 grid-cols-1 justify-between items-center gap-16 mt-24 mb-10">
+          <span className="lg:font-semibold font-bold lg:text-[40px] text-[30px] lg:leading-[80px] font-poppins">
             What people are <br /> saying about us
           </span>
           <p className="font-normal text-[18px] leading-[32px] tracking-[1%] font-poppins text-[#9e9fa4]">
@@ -54,15 +54,15 @@ function Testimonial() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 justify-center items-center gap-6">
+        <div className="grid lg:grid-cols-3 grid-cols-1 justify-center items-center gap-6">
           {Testimonials.map((testimonial, index) => (
             <div
               key={index}
-              onClick={() => setActiveIndex(index)} // Update active index on click
+              onMouseEnter={() => setActiveIndex(index)}
               className={`p-8 cursor-pointer rounded-lg w-[290px] h-[305px] ${
                 activeIndex === index
-                  ? "bg-shield text-white" // Active Testimonial: Custom background
-                  : "bg-transparent" // Default Testimonial: Gray background
+                  ? "bg-shield text-white"
+                  : "bg-transparent" 
               }`}
             >
               <div className="mb-5">
@@ -96,7 +96,7 @@ function Testimonial() {
           ))}
         </div>
 
-        <div className="grid grid-cols-4 items-center justify-center mt-20 px-10">
+        <div className="grid lg:grid-cols-4 grid-cols-1 items-center justify-center lg:mt-20 mt-16 lg:px-10 px-14 gap-10">
           <Image src="/airbnb.svg" alt="airbnb" height="60" width="192" />
           <Image src="/Binance.svg" alt="airbnb" height="60" width="192" />
           <Image src="/coinbase.svg" alt="airbnb" height="60" width="192" />

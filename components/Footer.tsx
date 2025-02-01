@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-10 mt-16">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-700 pb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 border-b border-gray-700 pb-6">
           {/* Logo & Description */}
           <div>
             <Link href="/Home" className="mb-6">

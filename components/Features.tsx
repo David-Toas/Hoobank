@@ -4,25 +4,25 @@ import React from "react";
 function Features() {
   return (
     <>
-     <Image
-            src="/purple.svg"
-            alt="square"
-            height="514"
-            width="645"
-            className="absolute top-[1300px] object-contain left-[0px] opacity-100 bg-blend-darken"
-          />
-     <Image
-            src="/Ellipse 2358.png"
-            alt="square"
-            height="471"
-            width="605"
-            className="absolute top-[800px] object-contain left-[0px] opacity-100 bg-blend-darken"
-          />
+      <Image
+        src="/purple.svg"
+        alt="square"
+        height="514"
+        width="645"
+        className="absolute top-[1300px] object-contain left-[0px] opacity-100 bg-blend-darken"
+      />
+      <Image
+        src="/Ellipse 2358.png"
+        alt="square"
+        height="471"
+        width="605"
+        className="absolute top-[800px] object-contain left-[0px] opacity-100 bg-blend-darken"
+      />
       <div className="relative">
-        <section className="flex flex-col md:flex-row items-center justify-between px-16 py-16  text-white mt-28">
+        <section className="flex flex-col md:flex-row items-center justify-between lg:px-16 lg:py-16  text-white lg:mt-28 mt-6">
           {/* Left Content */}
-          <div className="relative flex flex-col items-center space-y-6 mt-12 md:mt-0">
-            <div className="relative w-full h-full">
+          <div className="relative flex flex-col items-center lg:mt-12 ">
+            <div className="relative w-full h-full lg:block hidden">
               <div className="border border-[#201c28] bg-shield rounded-lg absolute top-[-90px] left-[185px] px-4 z-20">
                 <div className="mt-5 flex justify-center items-center gap-3">
                   <div className="border bg-white rounded-full px-2 w-12 h-12 flex items-center justify-center ">
@@ -82,8 +82,8 @@ function Features() {
             </div>
           </div>
           {/* Right Content */}
-          <div className="max-w-lg space-y-6">
-            <h1 className="text-[48px] font-semibold leading-[77px] break-words w-[470px] font-poppins">
+          <div className="max-w-lg space-y-6 px-14">
+            <h1 className="lg:text-[48px] text-[35px] font-semibold leading-[77px] break-words lg:w-[470px] w-[350px] font-poppins">
               Easily control your billing & invoicing.
             </h1>
             <p className="text-gray-400 break-words w-[430px] text-[18px] font-normal leading-[29px] tracking-[1%]">
@@ -98,10 +98,10 @@ function Features() {
           </div>
         </section>
 
-        <section className="flex flex-col md:flex-row items-center justify-between px-16 py-16  text-white mt-28">
+        <section className="flex flex-col md:flex-row items-center justify-between px-8 lg:px-16 py-16  text-white mt-28">
           {/* Left Content */}
           <div className="max-w-lg space-y-6">
-            <h1 className="text-[48px] font-semibold leading-[77px] break-words w-[570px] font-poppins">
+            <h1 className="lg:text-[48px] text-[35px] font-semibold leading-[77px] break-words lg:w-[570px] w-[390px] font-poppins">
               Find a better card deal <br /> in few easy steps.
             </h1>
             <p className="text-gray-400 break-words w-[370px]">
@@ -114,16 +114,18 @@ function Features() {
           </div>
 
           {/* Right Content */}
-          <div className="relative flex flex-col items-center space-y-6 mt-12 md:mt-0">
+          <div className="relative  flex flex-col items-center space-y-6 mt-12 md:mt-0">
             {/* Background Circular Image */}
-            <div className="absolute inset-0 flex items-center justify-center left-[-300px] w-74">
-              <div className="w-80 h-80 rounded-full border-[9px] border-[#2f4a52] absolute"></div>
-              <div className="w-60 h-60 rounded-full border-[6px] border-[#133f4b] absolute"></div>
-              <div className="w-36 h-36 rounded-full border-[3px] border-[#133f4b] absolute"></div>
+            <div className="lg:block hidden">
+              <div className="absolute inset-0 flex items-center justify-center left-[-300px] w-74">
+                <div className="w-80 h-80 rounded-full border-[9px] border-[#2f4a52] absolute"></div>
+                <div className="w-60 h-60 rounded-full border-[6px] border-[#133f4b] absolute"></div>
+                <div className="w-36 h-36 rounded-full border-[3px] border-[#133f4b] absolute"></div>
+              </div>
             </div>
 
             {/* Cards Positioned on Top */}
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full lg:block hidden">
               <Image
                 src="/Scan.svg"
                 alt="Scan Credit Cards"
