@@ -1,131 +1,152 @@
-"use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-unescaped-entities */
+"use client";
 
+import Image from "next/image";
 import React, { useEffect, useRef } from "react";
-import { animate, stagger } from "motion";
+import { animate, stagger } from "motion/react";
 
-// Feature type definition
-const features = [
+// Add correct types for features
+interface Feature {
+  icon: string;
+  alt: string;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
     icon: "/Star.svg",
     alt: "Star",
     title: "Rewards",
     description:
-      "The best credit cards offer some tantalizing combinations of promotions and prizes."
+      "The best credit cards offer some tantalizing combinations of promotions and prizes.",
   },
   {
     icon: "/Shield Done.svg",
     alt: "Shield",
     title: "100% Secured",
     description:
-      "We take proactive steps to make sure your information and transactions are secure."
+      "We take proactive steps to make sure your information and transactions are secure.",
   },
   {
     icon: "/Send.svg",
     alt: "Send",
     title: "Balance Transfer",
     description:
-      "A balance transfer credit card can save you a lot of money in interest charges."
-  }
+      "A balance transfer credit card can save you a lot of money in interest charges.",
+  },
 ];
 
-const images = [
-  {
-    src: "/robothand.svg",
-    alt: "robothand",
-    width: 644,
-    height: 669,
-    style: { top: "-950px", right: "0" }
-  },
-  {
-    src: "/Vector3.svg",
-    alt: "Sphere",
-    width: 30,
-    height: 30,
-    style: { top: "-750px", right: "500px" }
-  },
-  {
-    src: "/Vector2.svg",
-    alt: "Sphere",
-    width: 50,
-    height: 50,
-    style: { top: "-830px", right: "150px" }
-  },
-  {
-    src: "/card3.svg",
-    alt: "Card 3",
-    width: 350,
-    height: 250,
-    style: { top: "-1000px", right: "180px" }
-  },
-  {
-    src: "/card2.svg",
-    alt: "Card 2",
-    width: 450,
-    height: 250,
-    style: { top: "-1100px", right: "130px" }
-  },
-  {
-    src: "/card.svg",
-    alt: "Card",
-    width: 350,
-    height: 250,
-    style: { top: "-1135px", right: "190px" }
-  },
-  {
-    src: "/get.svg",
-    alt: "Get Started",
-    width: 120,
-    height: 120,
-    style: { top: "-1000px", right: "740px" }
-  },
-  {
-    src: "/Vector.svg",
-    alt: "Sphere",
-    width: 80,
-    height: 80,
-    style: { top: "-1200px", right: "500px" }
-  }
-];
+interface ImageItem {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  style: {
+    top: string;
+    right: string;
+  };
+}
 
 function Hero() {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const elements = containerRef.current.querySelectorAll(".animated-image");
 
-    animate(
+    (animate as any)(
       elements,
       {
-        transform: ['translateY(-100vh)', 'translateY(0vh)'],
-        opacity: [0, 1]
+        y: ["-100vh", "0vh"],
+        opacity: [0, 1],
       },
       {
         duration: 1,
         delay: stagger(0.2),
-        easing: "ease-out"
+        easing: "ease-out",
       }
     );
   }, []);
 
+  const images: ImageItem[] = [
+    {
+      src: "/robothand.svg",
+      alt: "robothand",
+      width: 644,
+      height: 669,
+      style: { top: "-950px", right: "0" },
+    },
+    {
+      src: "/Vector3.svg",
+      alt: "Sphere",
+      width: 30,
+      height: 30,
+      style: { top: "-750px", right: "500px" },
+    },
+    {
+      src: "/Vector2.svg",
+      alt: "Sphere",
+      width: 50,
+      height: 50,
+      style: { top: "-830px", right: "150px" },
+    },
+    {
+      src: "/card3.svg",
+      alt: "Card 3",
+      width: 350,
+      height: 250,
+      style: { top: "-1000px", right: "180px" },
+    },
+    {
+      src: "/card2.svg",
+      alt: "Card 2",
+      width: 450,
+      height: 250,
+      style: { top: "-1100px", right: "130px" },
+    },
+    {
+      src: "/card.svg",
+      alt: "Card",
+      width: 350,
+      height: 250,
+      style: { top: "-1135px", right: "190px" },
+    },
+    {
+      src: "/get.svg",
+      alt: "Get Started",
+      width: 120,
+      height: 120,
+      style: { top: "-1000px", right: "740px" },
+    },
+    {
+      src: "/Vector.svg",
+      alt: "Sphere",
+      width: 80,
+      height: 80,
+      style: { top: "-1200px", right: "500px" },
+    },
+  ];
+
   return (
     <>
-      <img
+      <Image
         src="/Ellipse 2333.png"
         alt="square"
         height={1851}
         width={608}
         className="absolute top-[-112px] object-contain left-[-65px] opacity-100 bg-blend-darken"
       />
-      <img
+      <Image
         src="/Ellipse.svg"
         alt="square"
         height={771}
         width={605}
         className="absolute top-0 object-contain right-0 opacity-100 bg-blend-darken"
       />
-      <img
+      <Image
         src="/Vector16.svg"
         alt="square"
         height={780}
@@ -137,7 +158,7 @@ function Hero() {
           <div className="max-w-4xl relative overflow-hidden lg:px-16 px-10 lg:mt-28">
             <div>
               <div className="flex justify-center items-center bg-[#222125] max-w-[330px] h-9 rounded-lg text-white text-sm font-normal mb-9">
-                <img src="/Discount.svg" alt="Icon" height={32} width={32} />
+                <Image src="/Discount.svg" alt="Icon" height={32} width={32} />
                 <div className="flex justify-center items-center gap-1">
                   <span className="text-[#e4e4e4]">20%</span>
                   <p className="text-[#909091]">DISCOUNT FOR</p>
@@ -145,6 +166,7 @@ function Hero() {
                   <p className="text-[#909091]">ACCOUNT</p>
                 </div>
               </div>
+              {/* Hero text content */}
               <div className="font-semibold lg:text-[72px] text-[65px] leading-[100px] tracking-[1%] font-poppins">
                 The Next
               </div>
@@ -162,7 +184,8 @@ function Hero() {
             </div>
           </div>
 
-          <div className="lg:mt-40 mt-20 grid lg:grid-cols-2 grid-cols-1 justify-center items-center gap-14 lg:px-16 px-10">
+          {/* Features section */}
+          <div className="lg:mt-40 mt-20 grid lg:grid-cols-2 grid-cols-1justify-center items-center gap-14 lg:px-16 px-10">
             <div>
               <span className="font-semibold text-[40px] leading-[76.8px] tracking-[1%] font-poppins">
                 You do the business, <br /> we'll handle the money.
@@ -185,11 +208,12 @@ function Hero() {
                   }`}
                 >
                   <div className="border border-[#01131a] bg-[#01131a] rounded-full lg:p-2 p-6">
-                    <img
+                    <Image
                       src={feature.icon}
                       alt={feature.alt}
                       width={30}
                       height={30}
+                      // className="lg:w-8 lg:h-8"
                     />
                   </div>
                   <div>
@@ -206,6 +230,7 @@ function Hero() {
           </div>
         </div>
 
+        {/* Animated images */}
         <section className="lg:block hidden">
           <div className="relative" ref={containerRef}>
             {images.map((image, index) => (
@@ -214,15 +239,15 @@ function Hero() {
                 className="animated-image"
                 style={{
                   position: "absolute",
-                  ...image.style
+                  ...image.style,
                 }}
               >
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
                   width={image.width}
                   height={image.height}
-                  style={{ maxWidth: "100%", height: "auto" }}
+                  priority={index < 8}
                 />
               </div>
             ))}
