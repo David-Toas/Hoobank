@@ -5,6 +5,8 @@
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { animate, stagger } from "motion/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Add correct types for features
 interface Feature {
@@ -69,6 +71,52 @@ function Hero() {
         easing: "ease-out",
       }
     );
+  }, []);
+
+  const featureRefs = useRef<(HTMLDivElement | null)[]>([]); // Store refs dynamically
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    featureRefs.current.forEach((feature, index) => {
+      if (feature) {
+        gsap.from(feature, {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: feature,
+            start: "top 85%",
+            end: "top 20%",
+            toggleActions: "play reverse play reverse", // Repeats when scrolling up
+          },
+        });
+      }
+    });
+  }, []);
+
+  const containerOneRef = useRef(null);
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: containerOneRef.current,
+          start: "top 60%",
+          toggleActions: "play reverse play reverse",
+        },
+        defaults: { ease: "power2.out", duration: 0.8 },
+      })
+      .from(headingRef.current, { y: -50, opacity: 0 })
+      .from(paragraphRef.current, { opacity: 0 }, "-=0.4")
+      .from(buttonRef.current, { x: 50, opacity: 0 }, "-=0.4");
   }, []);
 
   const images: ImageItem[] = [
@@ -186,16 +234,25 @@ function Hero() {
 
           {/* Features section */}
           <div className="lg:mt-40 mt-20 grid lg:grid-cols-2 grid-cols-1justify-center items-center gap-14 lg:px-16 px-10">
-            <div>
-              <span className="font-semibold text-[40px] leading-[76.8px] tracking-[1%] font-poppins">
+            <div ref={containerOneRef}>
+              <span
+                ref={headingRef}
+                className="font-semibold text-[40px] leading-[76.8px] tracking-[1%] font-poppins"
+              >
                 You do the business, <br /> we'll handle the money.
               </span>
-              <p className="text-[18px] leading-[30.6px] font-normal mt-5 font-poppins text-[#9e9fa4]">
+              <p
+                ref={paragraphRef}
+                className="text-[18px] leading-[30.6px] font-normal mt-5 font-poppins text-[#9e9fa4]"
+              >
                 With the right credit card, you can improve your financial life{" "}
                 <br /> by building credit, earning rewards and saving money. But{" "}
                 <br /> with hundreds of credit cards on the market.
               </p>
-              <button className="border border-[#59dee4] bg-custom-gradient h-14 px-6 rounded-lg text-[18px] leading-[27px] font-medium mt-10 font-poppins text-[#00040e]">
+              <button
+                ref={buttonRef}
+                className="border border-[#59dee4] bg-custom-gradient h-14 px-6 rounded-lg text-[18px] leading-[27px] font-medium mt-10 font-poppins text-[#00040e]"
+              >
                 Get started
               </button>
             </div>
@@ -203,6 +260,9 @@ function Hero() {
               {features.map((feature, index) => (
                 <div
                   key={index}
+                  ref={(el) => {
+                    if (el) featureRefs.current[index] = el;
+                  }}
                   className={`flex justify-center items-center gap-4 my-5 lg:px-4 px- rounded-lg ${
                     feature.title === "100% Secured" ? "bg-shield" : ""
                   }`}
@@ -213,7 +273,6 @@ function Hero() {
                       alt={feature.alt}
                       width={30}
                       height={30}
-                      // className="lg:w-8 lg:h-8"
                     />
                   </div>
                   <div>
